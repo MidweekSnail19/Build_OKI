@@ -436,19 +436,8 @@ jobs:
             - 编译时间: ${{ env.TIME_FORM }}
             - 机型：欧加真天玑9400+通用 6.6.89 内核（基于一加Ace5 Ultra 6.6.89 版官方OKI源码）
             - 特性：${{ env.KSU_TYPENAME }} + 风驰内核
-            - susfs支持：${{ github.event.inputs.susfs_enable }}
-            - KPM支持 (仅对sukisu生效)：${{ github.event.inputs.kpm_enable }}
             - LZ4支持：${{ github.event.inputs.lz4_enable }}
             - LZ4KD支持：${{ github.event.inputs.lz4kd_enable }}
-            - 网络功能增强：${{ github.event.inputs.better_net }}
-            - BBR/Brutal 等拥塞控制算法支持：${{ github.event.inputs.bbr_enable }}
-            - ADIOS IO调度器支持：${{ github.event.inputs.adios_enable }}
-            - Re-Kernel支持：${{ github.event.inputs.rekernel_enable }}
-            - 内核级基带保护支持：${{ github.event.inputs.baseband_guard }}
-            - SukiSU Ultra管理器下载：[SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases)
-            - KernelSU Next管理器下载：[KernelSU-Next](https://github.com/KernelSU-Next/KernelSU-Next/releases)
-            - MKSU管理器下载：[Magic-KernelSU](https://github.com/5ec1cff/KernelSU/actions)
-            - KSU原版管理器下载：[KernelSU](https://github.com/tiann/KernelSU/releases)
             ### ⏫️ 更新内容：
             - 更新${{ env.KSU_TYPENAME }}至最新版本（${{ needs.build.outputs.ksuver }}）
             - (预留)
