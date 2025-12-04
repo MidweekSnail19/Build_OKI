@@ -266,62 +266,15 @@ jobs:
           git apply -p1 < 001-lz4.patch || true
           patch -p1 < 002-zstd.patch || true
           
-      - name: 🔧 Set Baseband-guard (开启BBG基带守护)
-        if: ${{ env.ENABLE_FEATURE_A == 'true' }}
-        run: |
-          cd kernel_workspace/common
-          echo "正在启用BBG基带守护…"
-          curl -LSs https://raw.githubusercontent.com/vc-teahouse/Baseband-guard/main/setup.sh | bash
-          sed -i '/^config LSM$/,/^help$/{ /^[[:space:]]*default/ { /baseband_guard/! s/lockdown/lockdown,baseband_guard/ } }' ./security/Kconfig
-
-          
-      - name: ⚙️ Set SuKiSU Ultra (设置SuKiSU Ultra)
-        run: |
-          set -e
-          cd kernel_workspace
-          curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" -o setup.sh
-          bash setup.sh susfs-main
-          cd KernelSU
-          KSU_VERSION=$(expr "$(git rev-list --count main)" + 37185 2>/dev/null || echo 114514)
-          echo "KSUVER=$KSU_VERSION" >> "$GITHUB_ENV"
-          cp "${GITHUB_WORKSPACE}/.github/workflows/Bin/setup.bin" ./
-          chmod +x setup.bin
-          if [ ! -f "kernel/Makefile" ]; then
-            echo "::error ::kernel/Makefile"
-            ls -la
-            exit 1
-          fi
-          ./setup.bin
 
             
-      - name: 🔧 Set up SUSFS (配置 SUSFS)
-        # if: ${{ env.ENABLE_FEATURE_C == 'true' }}
-        run: |
-          cd kernel_workspace
-          echo "正在添加SukiSU Ultra补丁..."
-          git clone https://github.com/ShirkNeko/susfs4ksu.git -b gki-android15-6.6
-          git clone https://github.com/ShirkNeko/SukiSU_patch.git
-          cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android15-6.6.patch ./common/
-          cp ./susfs4ksu/kernel_patches/fs/* ./common/fs/
-          cp ./susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
-          cp ./SukiSU_patch/69_hide_stuff.patch ./common/
-          cd ./common
-          patch -p1 < 50_add_susfs_in_gki-android15-6.6.patch || true
+
 
 
 
           
       - name: 🔧 Set gki_defconfig (设置编译配置) 
         run: |
-          
-
-          if [ "${{ env.ENABLE_B }}" = "BBR" ]; then
-            
-          fi
-          if [ "${{ env.ENABLE_B }}" = "FQ_CODEL" ]; then
-            
-          fi
-          
           #Remove check_defconfig
           sudo sed -i 's/check_defconfig//' ./common/build.config.gki
 
@@ -333,8 +286,7 @@ jobs:
           sudo sed -i "s/-4k/$ESCAPED_SUFFIX/g" ./common/arch/arm64/configs/gki_defconfig
           sed -i 's/${scm_version}//' ./common/scripts/setlocalversion
           
-      - name: 🔧 Apply Sched Patch (应用完美风驰补丁)
-        run: |
+
          
 
       - name: 🔨 Build Kernel (构建内核)
