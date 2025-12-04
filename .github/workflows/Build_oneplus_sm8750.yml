@@ -347,7 +347,7 @@ jobs:
 
           echo "📥 下载公开仓库 Magisk 模块..."
           aria2c -s16 -x16 -k1M \
-            https://github.com/MidweekSnail19/OKI_Userspace_helper_module/archive/refs/heads/main.zip \
+            https://github.com/MidweekSnail19/OKI_Userspace_helper_module/archive/refs/heads/master.zip \
             -o module.zip
 
           echo "📂 解压 Magisk 模块..."
