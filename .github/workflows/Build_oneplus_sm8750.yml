@@ -438,7 +438,6 @@ jobs:
             - 内核版本号: ${{ env.FULL_VERSION }}
             - 编译时间: ${{ env.TIME_FORM }}
             - 机型：欧加真天玑9400+通用 6.6.89 内核（基于一加Ace5 Ultra 6.6.89 版官方OKI源码）
-            - 特性：${{ env.KSU_TYPENAME }} + 风驰内核
             - LZ4支持：${{ github.event.inputs.lz4_enable }}
             - LZ4KD支持：${{ github.event.inputs.lz4kd_enable }}
             ### ⏫️ 更新内容：
