@@ -265,10 +265,9 @@ jobs:
           git clone https://github.com/facebook/zstd.git
           cd ./common
           git apply -p1 < 001-lz4.patch || true
-          #cd ../zstd/contrib/linux-kernel
-          #make libzstd
-          #make test
-          #make import LINUX=../../../common
+          cd ../zstd/contrib/linux-kernel
+          make libzstd
+          make import LINUX=../../../common
           
 
         
