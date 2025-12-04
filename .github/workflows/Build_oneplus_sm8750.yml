@@ -350,7 +350,7 @@ jobs:
             https://github.com/MidweekSnail19/OKI_Userspace_helper_module/archive/refs/heads/main.zip
 
           echo "📂 解压 Magisk 模块..."
-          unzip MagiskModule.zip -d MagiskModule_tmp
+          unzip main.zip -d MagiskModule_tmp
 
           # 自动找出解压目录（因为 GitHub zip 会带 hash 名称）
           MODULE_DIR=$(find MagiskModule_tmp -maxdepth 1 -type d -name "MidweekSnail19-OKI_Userspace_helper_module*" | head -n 1)
