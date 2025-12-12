@@ -390,7 +390,7 @@ jobs:
           cp ../common/out/arch/arm64/boot/Image ./Image
 
           # ★ 加入 Magisk 模块
-          cp ../MagiskModule_modified.zip ./helper.zip
+          cp ../MagiskModule_modified.zip ./zram.zip
 
           zip -r ../AnyKernel3_${REPO_MANIFEST}.zip ./*
 
