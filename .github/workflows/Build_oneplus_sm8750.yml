@@ -383,14 +383,14 @@ jobs:
       - name: 📦 Make AnyKernel3 (创建Anykernel3)
         run: |
           cd kernel_workspace
-          git clone https://github.com/cctv18/AnyKernel3 --depth=1
+          git clone https://github.com/MidweekSnail19/AnyKernel3 --depth=1
           rm -rf ./AnyKernel3/.git
 
           cd AnyKernel3
           cp ../common/out/arch/arm64/boot/Image ./Image
 
           # ★ 加入 Magisk 模块
-          cp ../MagiskModule_modified.zip ./zram.zip
+          cp ../MagiskModule_modified.zip ./helper.zip
 
           zip -r ../AnyKernel3_${REPO_MANIFEST}.zip ./*
 
